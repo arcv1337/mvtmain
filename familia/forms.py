@@ -9,3 +9,6 @@ class PersonaForm(forms.Form):
     fecha_nacimiento = forms.DateField(label="fecha_nacimiento", input_formats=["%d/%m/%Y"],
     #widget es para poder agregar un tip para que el usuario sepa como ingresar la fecha
     widget=forms.TextInput(attrs={'placeholder': '30/12/1995'}))
+
+class BuscarPersonasForm(forms.Form):
+    palabra_a_buscar = forms.Charfield(label="Buscar")
