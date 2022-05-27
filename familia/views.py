@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.template import loader
 from django.shortcuts import render
-from familia.forms import BuscarPersonaForm, BuscarPersonasForm, PersonaForm
+from familia.forms import BuscarPersonasForm, PersonaForm
 
 from familia.models import Persona
 
@@ -63,15 +63,14 @@ def actualizar(request, identificador):
 
 
 def buscar(request):
-    personas = []
     if request.method == "GET":
         form_busqueda = BuscarPersonasForm()
-        return render(request, 'familia/form_busqueda.html', {"form_busqueda":form_busqueda, "persona_s":persona_s})
+        return render(request, 'familia/form_busqueda.html', {"form_busqueda": form_busqueda})
 
     elif request.method == "POST":
         form_busqueda = BuscarPersonasForm(request.POST)
         if form_busqueda.is_valid():
             palabra_a_buscar = form_busqueda.cleaned_data['palabra_a_buscar']
-            persona_s = Persona.objects.filter(nombre__icontains=form_busqueda.palabra_a_buscar)
+            personas = Persona.objects.filter(nombre__icontains=palabra_a_buscar)
 
-        return render(request, 'familia/listar_familiares.html', {"persona_s":persona_s})
+        return  render(request, 'familia/lista_familiares.html', {"personas": personas})

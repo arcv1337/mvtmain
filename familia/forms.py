@@ -11,4 +11,4 @@ class PersonaForm(forms.Form):
     widget=forms.TextInput(attrs={'placeholder': '30/12/1995'}))
 
 class BuscarPersonasForm(forms.Form):
-    palabra_a_buscar = forms.Charfield(label="Buscar")
+    palabra_a_buscar = forms.CharField(label="Buscar") 

@@ -5,7 +5,7 @@
 
 {%block cuerpo%}
 
-
+ 
 
 <div class="container">
     <div class="row">
@@ -13,7 +13,8 @@
         <h1>Miembros de Mi Familia</h1>
         {% url 'agregar' as agregar_url %}
         {% bootstrap_button "Agregar" size="sm" button_class="btn-primary" button_type="link" href=agregar_url %}
-
+        {% url 'buscar' as buscar_url %}
+        {% bootstrap_button "Buscar" size="sm" button_class="btn-primary" button_type="link" href=buscar_url %}
       </div>
       </div>
       <dov class="row">
